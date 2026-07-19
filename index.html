@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eaglercraft 1.8.9 - Custom Client</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/png" href="assets/icon.png">
+</head>
+<body>
+    <div id="background-container" class="background-container"></div>
+    
+    <div class="main-container">
+        <div class="menu-panel">
+            <div class="client-header">
+                <h1>Eaglercraft 1.8.9</h1>
+                <p class="version">Custom Client v1.0</p>
+                <div class="fps-display">FPS: <span id="fps-counter">60</span></div>
+            </div>
+
+            <div class="button-group">
+                <button id="single-player-btn" class="main-button">Singleplayer</button>
+                <button id="multi-player-btn" class="main-button">Multiplayer</button>
+                <button id="server-browser-btn" class="main-button">Server Browser</button>
+            </div>
+
+            <div class="settings-section">
+                <h3>Settings</h3>
+                <div class="settings-content">
+                    <button id="settings-btn" class="settings-button">⚙️ Graphics & FPS</button>
+                    <button id="texture-pack-btn" class="settings-button">📦 Texture Packs</button>
+                    <button id="pvp-utils-btn" class="settings-button">⚔️ PvP Utils</button>
+                    <button id="background-btn" class="settings-button">🖼️ Background</button>
+                </div>
+            </div>
+
+            <div class="footer">
+                <p>© 2024 Eaglercraft | Custom Edition</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Settings</h2>
+                <button class="close-btn" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/fps-booster.js"></script>
+    <script src="js/texture-pack-manager.js"></script>
+    <script src="js/pvp-utils.js"></script>
+    <script src="js/background-manager.js"></script>
+    <script src="js/ui-handler.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
