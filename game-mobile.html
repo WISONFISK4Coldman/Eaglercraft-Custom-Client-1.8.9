@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Eaglercraft 1.8.9 - Full Game Client</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/game-styles.css">
+    <link rel="icon" type="image/png" href="assets/icon.png">
+    <style>
+        /* Prevent text selection and context menu on mobile */
+        * {
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
+            user-select: none;
+        }
+        
+        input, textarea {
+            -webkit-user-select: text;
+            user-select: text;
+        }
+        
+        /* Viewport optimization */
+        body {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Game Canvas -->
+    <canvas id="game-canvas"></canvas>
+    
+    <!-- HUD Overlay -->
+    <div id="game-hud" class="game-hud hidden">
+        <!-- FPS Counter -->
+        <div class="hud-element fps-counter">
+            <span>FPS: </span><span id="hud-fps">60</span>
+        </div>
+        
+        <!-- Crosshair -->
+        <div id="crosshair" class="crosshair"></div>
+        
+        <!-- PvP Utils HUD -->
+        <div id="pvp-hud" class="pvp-hud">
+            <!-- CPS Counter -->
+            <div class="hud-element cps-display">
+                <span>CPS: </span><span id="cps-value">0</span>
+            </div>
+            
+            <!-- Health Bar -->
+            <div class="hud-element health-bar">
+                <span>Health: </span>
+                <div class="health-bg">
+                    <div id="player-health" class="health-fill"></div>
+                </div>
+            </div>
+            
+            <!-- Armor Status -->
+            <div class="hud-element armor-display">
+                <span>Armor:</span>
+                <div id="armor-items"></div>
+            </div>
+            
+            <!-- Target Info -->
+            <div id="target-info" class="hud-element target-info hidden">
+                <span>Target: </span><span id="target-name">-</span>
+                <div class="target-health-bg">
+                    <div id="target-health" class="target-health-fill"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pause Menu Button -->
+        <button id="pause-btn" class="pause-btn">ESC</button>
+    </div>
+    
+    <!-- Mobile Controls -->
+    <!-- Inserted by mobile-controls.js -->
+    
+    <!-- Pause Menu -->
+    <div id="pause-menu" class="pause-menu hidden">
+        <div class="pause-content">
+            <h1>Game Paused</h1>
+            <div class="pause-buttons">
+                <button id="resume-btn" class="pause-button">Resume Game</button>
+                <button id="settings-btn-pause" class="pause-button">⚙ Settings</button>
+                <button id="exit-btn" class="pause-button">Return to Menu</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">⚙ Game Settings</h2>
+                <button class="close-btn" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+        </div>
+    </div>
+    
+    <!-- Main Menu -->
+    <div id="main-menu" class="main-menu">
+        <div id="background-container" class="background-container"></div>
+        <div class="menu-panel">
+            <div class="client-header">
+                <h1>Eaglercraft 1.8.9</h1>
+                <p class="version">Custom Full Client v2.0</p>
+            </div>
+
+            <div class="button-group">
+                <button id="play-btn" class="main-button">▶ Play Game</button>
+                <button id="texture-pack-btn" class="main-button">📦 Texture Packs</button>
+                <button id="pvp-settings-btn" class="main-button">⚔ PvP Utils</button>
+                <button id="background-btn" class="main-button">🎨 Background</button>
+                <button id="graphics-btn" class="main-button">⚙ Graphics</button>
+            </div>
+
+            <div class="footer">
+                <p>© 2024 Eaglercraft | Custom Edition v2.0</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- World Select Menu -->
+    <div id="world-menu" class="world-menu hidden">
+        <div class="menu-panel">
+            <div class="menu-header">
+                <h2>Select World</h2>
+                <button class="back-btn" onclick="backToMainMenu()" style="pointer-events: auto;">← Back</button>
+            </div>
+            <div id="world-list" class="world-list"></div>
+            <button id="create-world-btn" class="main-button" onclick="createNewWorld()" style="pointer-events: auto;">+ Create New World</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/game-engine.js"></script>
+    <script src="js/hud-system.js"></script>
+    <script src="js/pvp-utils.js"></script>
+    <script src="js/texture-pack-manager.js"></script>
+    <script src="js/background-manager.js"></script>
+    <script src="js/game-ui.js"></script>
+    <script src="js/mobile-controls.js"></script>
+    <script src="js/game-main.js"></script>
+</body>
+</html>
